@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-
+import path from 'path';
 test('Mouse hover test', async ({ page }) => {
 //   await page.goto('https://www.qapractice.com/practice-ecommerece-website');
 
@@ -7,7 +7,9 @@ test('Mouse hover test', async ({ page }) => {
 
 await page.goto('https://practice.expandtesting.com/upload');
 
-await page.locator("#fileInput").setInputFiles("../test-data/kaleemPic.jpeg");
+const filePath = path.resolve(__dirname, '../test-data/kaleemPic.jpeg');
+
+await page.locator("#fileInput").setInputFiles(filePath);
 
 await page.waitForTimeout(5000)
 
